@@ -19,7 +19,6 @@ function Home() {
     <div className="App">
       <h1 id={isTitle}>Trivia Craze</h1>
 
-
       {!questions.length ? (
         <>
           <div id="score">Best Score: {highScore}</div>

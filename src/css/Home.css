@@ -41,3 +41,12 @@ body {
   font-size: 3em;
 }
 
+.correct {
+  background-color: green !important;
+  color: white !important;
+}
+
+.incorrect {
+  background-color: red !important;
+  color: white !important;
+}

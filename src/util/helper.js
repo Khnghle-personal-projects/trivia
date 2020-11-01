@@ -14,11 +14,16 @@ export function questionRandomizer(data){
 
 export function answerRandomizer (correct, incorrect) {
   const answers = [...incorrect, correct]
-  const index = Math.floor(Math.random() * answers.length)
   
-  const temp = answers[index]
-  answers[index] = answers[answers.length -1]
-  answers[answers.length - 1] = temp
-
+  for(let i = answers.length - 1; i >0; i--){
+    const j = Math.floor(Math.random() * (i+1))
+    swap(answers, j, i)
+  }
   return answers;
+}
+
+function swap (arr, indx1, indx2){
+  const temp = arr[indx1]
+  arr[indx1] = arr[indx2]
+  arr[indx2] = temp
 }

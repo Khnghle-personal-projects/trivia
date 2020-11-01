@@ -2,29 +2,29 @@ import '../css/Question.css';
 import { useEffect, useState } from 'react';
 import { answerRandomizer } from '../util/helper';
 
-function Random({
-  allQuestions,
-  highScore,
-  setHighScore,
-  setQuestions,
-  setIsTitle,
-}) {
+function Random({ allQuestions, highScore, setHighScore, setQuestions, setIsTitle,}) {
   const [currIndx, setCurrentIndx] = useState(0);
   const [answerOption, setAnswerOption] = useState([]);
   const [score, setScore] = useState(0);
+  const [display, setDisplay] = useState([])
 
   const currQuestion = allQuestions[currIndx];
 
   useEffect(() => {
-    if (currIndx < 10)
+    if (currIndx < 10){
       setAnswerOption(
         answerRandomizer(currQuestion.correct, currQuestion.incorrect)
       );
+    }
   }, [currIndx]);
 
   function onClick(evt) {
     if (evt.target.value === currQuestion.correct) setScore(score + 1);
-    setCurrentIndx(currIndx + 1);
+    setDisplay(answerOption.map(curr => curr === currQuestion.correct? 'correct' : 'incorrect'))
+    setTimeout( () => {
+      setDisplay([])
+      setCurrentIndx(currIndx + 1);
+    },1000)
   }
 
   function onSubmit() {
@@ -56,13 +56,13 @@ function Random({
           </div>
 
           <div id="answer-list">
-            {answerOption.map((curr) => (
+            {answerOption.map((curr, idx) => (
               <button
                 type="button"
                 onClick={onClick}
                 value={curr}
                 key={curr}
-                className="single-answer color"
+                className={`single-answer color ${display[idx] || ""}`}
               >
                 {curr}
               </button>
@@ -74,13 +74,10 @@ function Random({
           <hr />
           <div id="text">
             Congratulations! <br />
-            You scored {score}/10... again?
+            You scored {score}/10. 
           </div>
-          <button onClick={onReset} className="end-screen color">
-            Reset
-          </button>
           <button onClick={onSubmit} className="end-screen color">
-            Home
+            Again?
           </button>
         </div>
       )}
