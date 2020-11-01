@@ -12,6 +12,7 @@ export function questionRandomizer(data){
   return array
 }
 
+//Durstenfeld shuffle
 export function answerRandomizer (correct, incorrect) {
   const answers = [...incorrect, correct]
   

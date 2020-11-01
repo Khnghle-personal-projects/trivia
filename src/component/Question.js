@@ -7,6 +7,7 @@ function Random({ allQuestions, highScore, setHighScore, setQuestions, setIsTitl
   const [answerOption, setAnswerOption] = useState([]);
   const [score, setScore] = useState(0);
   const [display, setDisplay] = useState([])
+  const [disabledButton, setDisabledButton] = useState(false)
 
   const currQuestion = allQuestions[currIndx];
 
@@ -21,9 +22,11 @@ function Random({ allQuestions, highScore, setHighScore, setQuestions, setIsTitl
   function onClick(evt) {
     if (evt.target.value === currQuestion.correct) setScore(score + 1);
     setDisplay(answerOption.map(curr => curr === currQuestion.correct? 'correct' : 'incorrect'))
+    setDisabledButton(true)
     setTimeout( () => {
       setDisplay([])
       setCurrentIndx(currIndx + 1);
+      setDisabledButton(false)
     },1000)
   }
 
@@ -63,6 +66,7 @@ function Random({ allQuestions, highScore, setHighScore, setQuestions, setIsTitl
                 value={curr}
                 key={curr}
                 className={`single-answer color ${display[idx] || ""}`}
+                disabled={disabledButton}
               >
                 {curr}
               </button>
