@@ -1,0 +1,36 @@
+.App {
+  text-align: center;
+  color: white;
+}
+body {
+  background-color: black;
+}
+
+#title{
+   color: rosybrown;
+   text-shadow: -0.05em 0 red;
+   font-size: 10em;
+   margin-bottom: 0.1em;
+}
+
+#start-button{
+  margin-top: 0.8em;
+  font-size: 4em;
+  background-color: rosybrown;
+  border-radius: 0.3em;
+  color: white;
+  text-shadow: -0.05em 0 red;
+  border-color: brown;
+}
+
+#start-button:hover{
+  background-color: white;
+  color:blue;
+  border-color: blue;
+  text-shadow: -0.05em 0 black;
+}
+
+#score{
+  font-size: 3em;
+}
+
