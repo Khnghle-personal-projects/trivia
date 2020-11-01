@@ -7,15 +7,18 @@ import {questionRandomizer} from '../util/helper';
 function Home() {
   const [highScore, setHighScore] = useState(0);
   const [questions, setQuestions] = useState([]);
+  const [isTitle, setIsTitle] = useState('title')
 
   function handleStart() {
     const listOfQuestions = questionRandomizer(data).map(idx => data[idx]);
     setQuestions(listOfQuestions);
+    setIsTitle('subHeader')
   }
 
   return (
     <div className="App">
-      <h1 id="title">Trivia Craze</h1>
+      <h1 id={isTitle}>Trivia Craze</h1>
+
 
       {!questions.length ? (
         <>
@@ -24,7 +27,7 @@ function Home() {
         </>
       ) : (
         <>
-          <Question allQuestions = {questions} setQuestions={setQuestions} highScore = {highScore} setHighScore={setHighScore}/>
+          <Question allQuestions = {questions} setQuestions={setQuestions} highScore = {highScore} setHighScore={setHighScore} setIsTitle={setIsTitle}/>
         </>
       )}
     </div>

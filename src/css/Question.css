@@ -1,0 +1,54 @@
+.flex-container{
+  display: flex;
+  justify-content: space-between;
+}
+
+#answer-list{
+  display: flex;
+  margin-top: 5em;
+  justify-content: center;
+}
+
+#currScore {
+  font-size: 1.5em;
+}
+
+#question{
+  margin-top: .5em;
+  font-size: 2em;
+}
+
+.single-answer {
+  margin: 0em 2em 0em 2em;
+  width: 18em;
+  height: 9em;
+  font-size: 1.5em;
+}
+
+.color{
+  background-color: rosybrown;
+  border-radius: 0.3em;
+  color: white;
+  text-shadow: -0.05em 0 red;
+  border-color: brown;
+}
+
+.color:hover {
+  background-color: white;
+  color:red;
+  border-color: red;
+  text-shadow: -0.05em 0 black;
+}
+
+#text{
+  margin-top: 4em;
+  font-size: 2em;
+}
+
+
+.end-screen{
+  margin: 2em 1em 0em 1em;
+  width: 4em;
+  height: 2em;
+  font-size: 1em;
+}

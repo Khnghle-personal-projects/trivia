@@ -13,6 +13,13 @@ body {
    margin-bottom: 0.1em;
 }
 
+#subHeader{
+  color: rosybrown;
+  text-shadow: -0.05em 0 red;
+  font-size: 3em;
+  margin-bottom: 0.1em;
+}
+
 #start-button{
   margin-top: 0.8em;
   font-size: 4em;
@@ -25,8 +32,8 @@ body {
 
 #start-button:hover{
   background-color: white;
-  color:blue;
-  border-color: blue;
+  color:red;
+  border-color: red;
   text-shadow: -0.05em 0 black;
 }
 

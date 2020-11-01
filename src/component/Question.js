@@ -7,6 +7,7 @@ function Random({
   highScore,
   setHighScore,
   setQuestions,
+  setIsTitle,
 }) {
   const [currIndx, setCurrentIndx] = useState(0);
   const [answerOption, setAnswerOption] = useState([]);
@@ -28,30 +29,59 @@ function Random({
 
   function onSubmit() {
     if (score > highScore) setHighScore(score);
+    onReset();
+  }
+
+  function onReset() {
     setScore(0);
     setQuestions([]);
+    setIsTitle('title');
   }
 
   return (
     <div>
       {currIndx < 10 ? (
         <div>
-          <div>Current Score: {score} </div>
+          <hr />
 
-          <div>{currQuestion.question}</div>
-
-          <div className = "flex">
-          {answerOption.map((curr) => (
-            <button type="button" onClick={onClick} value={curr} key={curr}>
-              {curr}
+          <div className="flex-container">
+            <div id="currScore">Current Score: {score}/10 </div>
+            <button onClick={onReset} className="flex-item color">
+              Reset
             </button>
-          ))}
+          </div>
+
+          <div id="question">
+            Q{currIndx + 1}. {currQuestion.question}
+          </div>
+
+          <div id="answer-list">
+            {answerOption.map((curr) => (
+              <button
+                type="button"
+                onClick={onClick}
+                value={curr}
+                key={curr}
+                className="single-answer color"
+              >
+                {curr}
+              </button>
+            ))}
           </div>
         </div>
       ) : (
         <div>
-          You scored {score}/10
-          <button onClick={onSubmit}>Home</button>
+          <hr />
+          <div id="text">
+            Congratulations! <br />
+            You scored {score}/10... again?
+          </div>
+          <button onClick={onReset} className="end-screen color">
+            Reset
+          </button>
+          <button onClick={onSubmit} className="end-screen color">
+            Home
+          </button>
         </div>
       )}
     </div>
